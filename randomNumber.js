@@ -3,17 +3,19 @@ const getRandomNumber = (number1, number2) => Math.floor(Math.random() * (number
 
 const getRandomHexChar = () => getRandomNumber(0, 15).toString(16);
 
-const getUUIDStrings = (stringLength, stringValue) => stringValue = stringLength >= 0
-    ? stringValue + getUUIDStrings(stringLength - 1, getRandomHexChar()) : ""
+const generateRandomHexString = (stringLength, stringValue) => stringValue = stringLength >= 0
+    ? stringValue + generateRandomHexString(stringLength - 1, getRandomHexChar()) : ''
 
-const getRandomHexString = (stringLength) => getUUIDStrings(stringLength, '')
+const getUUIDString = (stringLength) => generateRandomHexString(stringLength, '')
 
-const getUUID = () => [8, 4, 4, 4, 12].map(getRandomHexString)
+const getUUID = () => [8, 4, 4, 4, 12].map(getUUIDString).join('-')
 
-const displayUUID = () => getUUID().join('-')
+const displayUUID = (UUID) => console.log(UUID)
 
-const main = () => console.log(displayUUID());
-
+const main = () => {
+    const UUID = getUUID();
+    displayUUID(UUID);
+}
 main();
 
 
