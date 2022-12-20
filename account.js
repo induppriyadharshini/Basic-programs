@@ -53,12 +53,8 @@ const transactions = [
 ];
 
 const operations = { 
-  withdrawal:  (transaction, balances) => ({
-    ...balances, [transaction.accountNo]: balances[transaction.accountNo] - transaction.amount,
-  }),
-  deposit: (transaction, balances) => ({
-    ...balances, [transaction.accountNo]: balances[transaction.accountNo] + transaction.amount,
-  })
+  withdrawal: -1,
+  deposit: +1
 }
 
 const getBalances = (account, balances) => ({
@@ -66,9 +62,12 @@ const getBalances = (account, balances) => ({
 })
 
 const updateBalancesWithTransactions = (balances, transactions) => {
-  transactions.map((transaction) => balances = operations[transaction.type](transaction, balances))
+  transactions.map((transaction) => balances = ({
+    ...balances, [transaction.accountNo]: balances[transaction.accountNo] + transaction.amount * (operations[transaction.type]),
+  }))
   return balances;
 }
+
 
 const displayBalances = (accounts, balances) => {
   const accountDetails = accounts.map((account) => getBalances(account, balances));
