@@ -11,8 +11,8 @@ const getTotalDistance = (routeDistance) => routeDistance.reduce((totalDistance,
 const processDistances = (distances, routesVia) => {
   const stops = routesVia.split('-');
   const routeDistance = getRouteDistance(distances, stops)
-  const totalDistance = getTotalDistance(routeDistance);
-  return totalDistance;
+  
+  return getTotalDistance(routeDistance);
 }
 
 const getDistance = (distances, from, to) => {
