@@ -4,11 +4,15 @@ const updateRoutesWithDistances = (distances, routes) => routes.map((route) => (
 
 const displayDistances = (totalDistances) => console.log(totalDistances);
 
+const getRouteDistance = (distances, stops) => stops.map((stop, currentStopIndex) => getDistance(distances, stop, stops[currentStopIndex + 1]))
+
+const getTotalDistance = (routeDistance) => routeDistance.reduce((totalDistance, currentDistance) => totalDistance + currentDistance);
+
 const processDistances = (distances, routesVia) => {
   const stops = routesVia.split('-');
-
-  return stops.map((stop, currentStopIndex) => getDistance(distances, stop, stops[currentStopIndex + 1]))
-    .reduce((totalDistance, currentDistance) => totalDistance + currentDistance);
+  const routeDistance = getRouteDistance(distances, stops)
+  const totalDistance = getTotalDistance(routeDistance);
+  return totalDistance;
 }
 
 const getDistance = (distances, from, to) => {
