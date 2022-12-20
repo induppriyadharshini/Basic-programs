@@ -1,4 +1,4 @@
-const csvToJson = require('csvtojson');
+const csvToJson = require("csvtojson");
 
 const updateRoutesWithDistances = (distances, routes) => routes.map((route) => ({ ...route, Distance: processDistances(distances, route.Stops) }))
 
@@ -11,7 +11,7 @@ const getTotalDistance = (routeDistance) => routeDistance.reduce((totalDistance,
 const processDistances = (distances, routesVia) => {
   const stops = routesVia.split('-');
   const routeDistance = getRouteDistance(distances, stops)
-  
+
   return getTotalDistance(routeDistance);
 }
 
