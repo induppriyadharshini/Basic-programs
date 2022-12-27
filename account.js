@@ -1,3 +1,5 @@
+const { map } = require("@laufire/utils/collection");
+
 const accounts = [
   {
     'name': 'Arun',
@@ -62,7 +64,7 @@ const getBalances = (account, balances) => ({
 })
 
 const updateBalancesWithTransactions = (balances, transactions) => {
-  transactions.map((transaction) => balances = ({
+  map(transactions, (transaction) => balances = ({
     ...balances, [transaction.accountNo]: balances[transaction.accountNo] + transaction.amount * (operationSelector[transaction.type]),
   }))
   return balances;
