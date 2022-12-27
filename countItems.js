@@ -1,15 +1,19 @@
 const { map } = require("@laufire/utils/collection");
 
-const animals = ["dog", "cat", "wolf", "lion", "dog", "cat", "wolf", "lion", "dog", "tiger"];
-
+const items = {
+  animals : ["dog", "cat", "wolf", "lion", "dog", "cat", "wolf", "lion", "dog", "tiger"],
+  birds: ["parrot", "peacock", "parrot", "crow","parrot","sparrow", "crow" , "sparrow"]
+}
 
 const getAnimalsWithCounts = (animals) => animals
   .reduce((acc, animal) => ({ ...acc, [animal]: (acc[animal] || 0) + 1 }), {})
 
+const getTotalCount = (items) => map(items, item => getAnimalsWithCounts(item));
+
 const displayAnimalsWithCount = (animalsWithCount) => console.log(animalsWithCount);
 
 const main = () => {
-  const animalsWithCount = getAnimalsWithCounts(animals)
+  const animalsWithCount = getTotalCount(items);
   displayAnimalsWithCount(animalsWithCount);
 }
 
