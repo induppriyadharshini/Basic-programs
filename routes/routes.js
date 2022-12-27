@@ -1,4 +1,4 @@
-const csvToJson = require("csvtojson");
+const { readInput } = require("./readInput");
 
 const updateRoutesWithDistances = (distances, routes) => routes.map((route) => ({ ...route, Distance: processDistances(distances, route.Stops) }))
 
@@ -23,8 +23,7 @@ const getDistance = (distances, from, to) => {
 }
 
 const main = async () => {
-  const distances = await csvToJson().fromFile('./distances.csv')
-  const routes = await csvToJson().fromFile('./routes.csv')
+  const {distances, routes} = await readInput();
   const routesWithDistances = updateRoutesWithDistances(distances, routes);
   displayDistances(routesWithDistances);
 }
