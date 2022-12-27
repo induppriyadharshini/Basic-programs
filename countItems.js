@@ -5,22 +5,16 @@ const items = {
   birds: ["parrot", "peacock", "parrot", "crow","parrot","sparrow", "crow" , "sparrow"]
 }
 
-const getAnimalsWithCounts = (animals) => animals
-  .reduce((acc, animal) => ({ ...acc, [animal]: (acc[animal] || 0) + 1 }), {})
+const getItemsWithCounts = (items) => items
+  .reduce((acc, item) => ({ ...acc, [item]: (acc[item] || 0) + 1 }), {})
 
-const getTotalCount = (items) => map(items, item => getAnimalsWithCounts(item));
+const getTotalCount = (items) => map(items, item => getItemsWithCounts(item));
 
-const displayAnimalsWithCount = (animalsWithCount) => console.log(animalsWithCount);
+const displayItemsWithCount = (itemsWithCount) => console.log(itemsWithCount);
 
 const main = () => {
-  const animalsWithCount = getTotalCount(items);
-  displayAnimalsWithCount(animalsWithCount);
+  const itemsWithCount = getTotalCount(items);
+  displayItemsWithCount(itemsWithCount);
 }
 
 main();
-
-/*
-{
-  animals: { dog: 3, cat: 2, wolf: 2, lion: 2, tiger: 1 },
-  birds: { parrot: 3, peacock: 1, crow: 2, sparrow: 2 }
-}*/

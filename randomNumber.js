@@ -16,6 +16,7 @@ const main = () => {
     const UUID = getUUID();
     displayUUID(UUID);
 }
+
 main();
 
 

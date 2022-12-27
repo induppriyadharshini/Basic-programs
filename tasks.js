@@ -31,31 +31,11 @@ const getTotalCost = (houseData) => ({
     ...houseData, totalCost: processTotalCost(houseData)
 })
 
+const displayCosts = (output) => console.log(output)
+
 const main = () => {
     const output = getTotalCost(data);
-    console.log(output);
+    displayCosts(output);
 }
-main();
 
-/*const data = {
-  cost: 10,
-  name: 'buildHouse',
-  totalCost: 40,
-  tasks: [
-      {
-          cost: 5,
-          name: 'purchase material',
-          tasks: [
-              {
-                  cost: 10,
-                  name: 'purchase cement',
-                  totalCost: 10
-              },
-              {
-                  cost: 15,
-                  name: 'purchase steel',
-                  totalCost: 15
-              },
-          ],
-          totalC
-*/
+main();
